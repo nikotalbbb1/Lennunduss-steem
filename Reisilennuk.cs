@@ -16,7 +16,7 @@ namespace Lennundussüsteem
 
         public override void Kirjeldus()
         {
-            Console.WriteLine("Reisilennuk: " + Nimi + ", kiirus: " + Kiirus + " km/h, reisijaid: " + ReisijateArv);
+            Console.WriteLine("Reisilennuk: " + Nimi + ", kiirus: " + Kiirus + " km/h, reisijaid: " + ReisijateArv + "Punkt : ");
             TankiInfo();
         }
     }

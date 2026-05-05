@@ -10,6 +10,7 @@ namespace Lennundussüsteem
         public int Kiirus { get; private set; }
         public double Kütusekogus { get; private set; }
         public double MaxMaht { get; private set; }
+        public bool onOhus = false;
 
         public Lennuk(string nimi, int kiirus, double kütusekogus, double maxMaht)
         {
@@ -30,25 +31,15 @@ namespace Lennundussüsteem
 
         public void Lenda()
         {
-            if (Kütusekogus > 0)
-            {
-                Console.WriteLine(Nimi + " võtab õhku.");
-                Kütusekogus -= 10;
-
-                if (Kütusekogus < 0)
-                    Kütusekogus = 0;
-            }
-            else
-            {
-                Console.WriteLine(Nimi + " ei saa lennata, sest kütus on otsas.");
-            }
+            onOhus = true;
+            Console.WriteLine("Lennuk tõusis õhku.");
         }
 
         public void Maandu()
         {
-            Console.WriteLine(Nimi + " maandub.");
+            onOhus = false;
+            Console.WriteLine("Lennuk maandus.");
         }
-
         public void Tanki(double kogus)
         {
             if (kogus <= 0)
