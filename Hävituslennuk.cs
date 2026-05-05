@@ -16,7 +16,7 @@ namespace Lennundussüsteem
 
         public override void Kirjeldus()
         {
-            Console.WriteLine("Hävituslennuk: " + Nimi + ", kiirus: " + Kiirus + " km/h, relv: " + Relv);
+            Console.WriteLine("Hävituslennuk: " + Nimi + ", kiirus: " + Kiirus + " km/h, relv: " + Relv + ", staatus: " + AnnaStaatus() + ", punkt: " + punkt);
             TankiInfo();
         }
     }

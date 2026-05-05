@@ -10,19 +10,12 @@ namespace Lennundussüsteem
         public int Kiirus { get; private set; }
         public double Kütusekogus { get; private set; }
         public double MaxMaht { get; private set; }
+
         public bool onOhus = false;
+        public string punkt = "A";
 
         public Lennuk(string nimi, int kiirus, double kütusekogus, double maxMaht)
         {
-            if (string.IsNullOrWhiteSpace(nimi))
-                throw new ArgumentException("Nimi ei tohi olla tühi.");
-
-            if (kiirus <= 0)
-                throw new ArgumentException("Kiirus peab olema suurem kui 0.");
-
-            if (kütusekogus < 0 || kütusekogus > maxMaht)
-                throw new ArgumentException("Kütusekogus on vigane.");
-
             Nimi = nimi;
             Kiirus = kiirus;
             Kütusekogus = kütusekogus;
@@ -31,18 +24,40 @@ namespace Lennundussüsteem
 
         public void Lenda()
         {
-            onOhus = true;
-            Console.WriteLine("Lennuk tõusis õhku.");
+            if (Kütusekogus > 0)
+            {
+                onOhus = true;
+
+                if (punkt == "A")
+                    punkt = "B";
+                else if (punkt == "B")
+                    punkt = "C";
+
+                Console.WriteLine(Nimi + " võtab õhku.");
+                Kütusekogus -= 10;
+
+                if (Kütusekogus < 0)
+                    Kütusekogus = 0;
+            }
+            else
+            {
+                Console.WriteLine(Nimi + " ei saa lennata, sest kütus on otsas.");
+            }
         }
 
         public void Maandu()
         {
             onOhus = false;
-            Console.WriteLine("Lennuk maandus.");
+            Console.WriteLine(Nimi + " maandub.");
         }
+
         public void Tanki(double kogus)
         {
-            if (kogus <= 0)
+            if (onOhus)
+            {
+                Console.WriteLine("Õhus ei saa tankida.");
+            }
+            else if (kogus <= 0)
             {
                 Console.WriteLine("Kütuse kogus peab olema suurem kui 0.");
             }
@@ -62,7 +77,14 @@ namespace Lennundussüsteem
             Console.WriteLine("Kütus: " + Kütusekogus + "/" + MaxMaht);
         }
 
+        public string AnnaStaatus()
+        {
+            if (onOhus)
+                return "õhus";
+            else
+                return "maandunud";
+        }
+
         public abstract void Kirjeldus();
     }
-
 }

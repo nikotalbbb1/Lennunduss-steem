@@ -16,7 +16,7 @@ namespace Lennundussüsteem
 
         public override void Kirjeldus()
         {
-            Console.WriteLine("Helikopter: " + Nimi + ", kiirus: " + Kiirus + " km/h, vajab maandumisrada: " + VajabMaandumisrada);
+            Console.WriteLine("Helikopter: " + Nimi + ", kiirus: " + Kiirus + " km/h, vajab maandumisrada: " + VajabMaandumisrada + ", staatus: " + AnnaStaatus() + ", punkt: " + punkt);
             TankiInfo();
         }
     }
